@@ -73,6 +73,7 @@ public class ScoresWidgetIntentService extends IntentService {
 
         //Get score data from Content Provider
         Cursor data = getContentResolver().query(DatabaseContract.scores_table.buildScoreWithDate(), SCORE_COLUMNS, null, mFragmentDate, null);
+        Log.i(LOG_TAG, String.valueOf(data.getCount()));
 
         if (data == null) {
             Log.i(LOG_TAG, "null cursor");

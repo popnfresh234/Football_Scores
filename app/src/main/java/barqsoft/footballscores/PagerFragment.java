@@ -31,8 +31,7 @@ public class PagerFragment extends Fragment
         View rootView = inflater.inflate(R.layout.pager_fragment, container, false);
         mPagerHandler = (ViewPager) rootView.findViewById(R.id.pager);
         mPagerAdapter = new myPageAdapter(getChildFragmentManager());
-        for (int i = 0;i < NUM_PAGES;i++)
-        {
+        for (int i = 0;i < NUM_PAGES;i++) {
             //Uncomment when real data availavle
 //            Date fragmentdate = new Date(System.currentTimeMillis()+((i-2)*86400000));
 //            SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
@@ -41,15 +40,18 @@ public class PagerFragment extends Fragment
 
 
             //LOAD OLD DATA
-            Date fragmentdate = new Date(System.currentTimeMillis()+((i-2)*86400000));
+            Date dumymDate = new Date();
+            Date fragmentdate = new Date(System.currentTimeMillis() + ((i - 2) * 86400000));
             String dateSt = "March 3, 2015";// start jd
             try {
                 DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-                fragmentdate = format.parse(dateSt);
-            }catch (Exception e)
-            {
+                dumymDate = format.parse(dateSt);
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }//end jd
+            long milis = dumymDate.getTime();
+            fragmentdate = new Date(milis + ((i - 2) * 86400000));
 
             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
             viewFragments[i] = new MainScreenFragment();
