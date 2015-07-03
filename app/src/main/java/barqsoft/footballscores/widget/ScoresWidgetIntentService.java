@@ -10,6 +10,7 @@ import android.widget.RemoteViews;
 
 import barqsoft.footballscores.DatabaseContract;
 import barqsoft.footballscores.R;
+import barqsoft.footballscores.Utilies;
 
 /**
  * Created by Alexander on 7/2/2015.
@@ -63,9 +64,17 @@ public class ScoresWidgetIntentService extends IntentService {
         }
 
         //extract data
-        String home = data.getString(INDEX_HOME);
-        String homeGoals = data.getString(INDEX_HOME_GOALS);
-        Log.i(LOG_TAG, home);
+        String homeName = data.getString(INDEX_HOME);
+        int homeCrestId = Utilies.getTeamCrestByTeamName(homeName);
+
+        int homeGoals = data.getInt(INDEX_HOME_GOALS);
+        int awayGoals = data.getInt(INDEX_AWAY_GOALS);
+        String score = Utilies.getScores(homeGoals, awayGoals);
+
+        String awayName = data.getString(INDEX_AWAY);
+        int awayCrestId = Utilies.getTeamCrestByTeamName(awayName);
+
+        String matchTime = data.getString(INDEX_MATCH_TIME);
         data.close();
 
         for (int appWidgetId : appWidgetIds) {
@@ -75,8 +84,16 @@ public class ScoresWidgetIntentService extends IntentService {
             RemoteViews views = new RemoteViews(getPackageName(), layoutId);
 
             //Add data
-            views.setTextViewText(R.id.widget_home, home);
-            views.setTextViewText(R.id.widget_home_goals, homeGoals);
+            views.setImageViewResource(R.id.widget_home_crest, homeCrestId);
+            views.setTextViewText(R.id.widget_home_name, homeName);
+
+            views.setTextViewText(R.id.widget_score_textview, score);
+
+            views.setImageViewResource(R.id.widget_away_crest, awayCrestId);
+            views.setTextViewText(R.id.widget_away_name, awayName);
+
+            views.setTextViewText(R.id.widget_data_textview, matchTime);
+
             //update widget
             appWidgetManager.updateAppWidget(appWidgetId, views);
 
