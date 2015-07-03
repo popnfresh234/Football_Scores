@@ -46,6 +46,24 @@
                 android:resource="@xml/widget_info_scores" />
         </receiver>
         <service android:name=".widget.ScoresWidgetIntentService" />
+
+
+        <receiver
+            android:name=".widget.ScoresListProvider"
+            android:label="@string/title_widget_scores_list"
+    >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="barqsoft.footballscores.ACTION_DATA_UPDATED" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_scores_list" />
+        </receiver>
+        <service
+            android:name=".widget.ScoresListRemoteViewsService"
+
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

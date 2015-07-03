@@ -17,4 +17,9 @@
     <dimen name="widget_scores_min_resize_width">250dp</dimen>
     <dimen name="widget_scores_min_resize_height">@dimen/widget_scores_default_height</dimen>
 
+    <dimen name="widget_scores_list_default_width">250dp</dimen>
+    <dimen name="widget_scores_list_default_height">180dp</dimen>
+    <dimen name="widget_scores_list_min_resize_width">220dp</dimen>
+    <dimen name="widget_scores_list_min_resize_height">@dimen/widget_scores_list_default_height</dimen>
+
 </resources>
