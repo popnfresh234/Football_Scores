@@ -60,8 +60,16 @@ public class myFetchService extends IntentService
         String JSON_data = null;
         //Opening Connection
         try {
-            URL fetch = new URL(fetch_build.toString());
+            //UNCOMMENT LATER
+//            URL fetch = new URL(fetch_build.toString());
+//            m_connection = (HttpURLConnection) fetch.openConnection();
+
+            //TEMPORARY DATA
+            String jdtemp = "http://api.football-data.org/alpha/fixtures/?timeFrameStart=2015-03-01&timeFrameEnd=2015-03-05";
+            URL fetch = new URL(jdtemp);
             m_connection = (HttpURLConnection) fetch.openConnection();
+            //END TEMP DATA
+
             m_connection.setRequestMethod("GET");
             m_connection.addRequestProperty("X-Auth-Token","e136b7858d424b9da07c88f28b61989a");
             m_connection.connect();

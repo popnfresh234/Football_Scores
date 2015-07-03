@@ -8,6 +8,11 @@ import android.database.Cursor;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import barqsoft.footballscores.DatabaseContract;
 import barqsoft.footballscores.R;
 import barqsoft.footballscores.Utilies;
@@ -45,14 +50,30 @@ public class ScoresWidgetIntentService extends IntentService {
         super("ScoresWidgetIntentService");
     }
 
+    private String[] mFragmentDate = new String[1];
+
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.i(LOG_TAG, "onHandleIntent");
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, ScoresWidgetProvider.class));
 
+        Date fragmentdate = new Date(System.currentTimeMillis()+(86400000));
+        String dateSt = "March 3, 2015";// start jd
+        try {
+            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+            fragmentdate = format.parse(dateSt);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }//end jd
+        SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+
+        mFragmentDate[0] = mformat.format(fragmentdate);
+
         //Get score data from Content Provider
-        Cursor data = getContentResolver().query(DatabaseContract.BASE_CONTENT_URI, SCORE_COLUMNS, null, null, DatabaseContract.scores_table.DATE_COL + " ASC");
+        Cursor data = getContentResolver().query(DatabaseContract.scores_table.buildScoreWithDate(), SCORE_COLUMNS, null, mFragmentDate, null);
+
         if (data == null) {
             Log.i(LOG_TAG, "null cursor");
             return;
