@@ -51,7 +51,7 @@ public class scoresAdapter extends CursorAdapter
         String score = Utilies.getScores(cursor.getInt(COL_HOME_GOALS),cursor.getInt(COL_AWAY_GOALS));
 
         final ViewHolder mHolder = (ViewHolder) view.getTag();
-        mHolder.home_name.setText(homeName);;
+        mHolder.home_name.setText(homeName);
         mHolder.home_name.setContentDescription(context.getString(R.string.a11y_home_name, homeName));
 
         mHolder.away_name.setText(awayName);

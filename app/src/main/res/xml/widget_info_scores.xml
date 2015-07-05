@@ -6,7 +6,7 @@
     android:minResizeHeight="@dimen/widget_scores_min_resize_height"
     android:minResizeWidth="@dimen/widget_scores_min_resize_width"
     android:minWidth="@dimen/widget_scores_default_width"
-    android:previewImage="@drawable/widget_preview_today"
+    android:previewImage="@drawable/widget_preview_score"
     android:resizeMode="horizontal"
     android:updatePeriodMillis="500"
     tools:ignore="UnusedAttribute" />

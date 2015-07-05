@@ -7,7 +7,7 @@
     android:minResizeHeight="@dimen/widget_scores_list_min_resize_height"
     android:minResizeWidth="@dimen/widget_scores_list_min_resize_width"
     android:minWidth="@dimen/widget_scores_list_default_width"
-    android:previewImage="@drawable/widget_preview_detail"
+    android:previewImage="@drawable/widget_preview_scores_list"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen|keyguard"
