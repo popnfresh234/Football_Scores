@@ -30,7 +30,8 @@
                     android:id="@+id/widget_home_crest"
                     android:layout_width="@dimen/widget_crest_width"
                     android:layout_height="@dimen/widget_crest_height"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/a11y_home_crest"/>
 
                 <TextView
                     android:id="@+id/widget_home_name"
@@ -82,7 +83,8 @@
                     android:id="@+id/widget_away_crest"
                     android:layout_width="@dimen/widget_crest_width"
                     android:layout_height="@dimen/widget_crest_height"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/a11y_away_crest"/>
 
                 <TextView
                     android:id="@+id/widget_away_name"
